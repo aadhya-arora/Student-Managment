@@ -26,19 +26,19 @@ public class App
 
             switch (choice) {
                 case 1:
-                    m.addStudent();
+                    m.addStudent(session);
                     break;
 
                 case 2:
-                    m.viewStudents();
+                    m.viewStudents(session);
                     break;
 
                 case 3:
-                    m.deleteStudent();
+                    m.deleteStudent(session);
                     break;
 
                 case 4:
-                    m.updateStudent();
+                    m.updateStudent(session);
                     break;
 
                 case 5:
