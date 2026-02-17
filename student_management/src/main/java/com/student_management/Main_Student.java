@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-public class Main {
+public class Main_Student {
     
     Scanner sc=new Scanner(System.in);
     public int menu(){
@@ -120,10 +120,65 @@ public class Main {
         }
     }
     public void updateStudent(Session session){
-
+        Transaction tx2=null;
+        try {
+            System.out.println("Enter student id:");
+            int id=sc.nextInt();
+            System.out.println("Enter new details of the student:");
+            System.out.print("Name:");
+            sc.nextLine();
+            String name=sc.nextLine();
+            System.out.print("Email:");
+            String email=sc.next();
+            System.out.print("Branch:");
+            String branch=sc.next();
+            System.out.print("Age:");
+            int age=sc.nextInt();
+            tx2=session.beginTransaction();
+            Student s4=session.get(Student.class,id);
+            if(s4!=null)
+            {   
+                s4.set_name(name);
+                s4.set_email(email);
+                s4.set_branch(branch);
+                s4.set_age(age);
+            }
+            tx2.commit();
+            System.out.println("Student updated successfully");
+        }
+        catch(Exception e)
+        {
+            if(tx2!=null)
+            {
+                tx2.rollback();
+            }
+            e.printStackTrace();
+            System.out.println("Error updating student");
+        } 
     }
     public void deleteStudent(Session session){
-
+        Transaction tx3=null;
+        try{
+            System.out.println("Enter student id:");
+            int id=sc.nextInt();
+            tx3=session.beginTransaction();
+            Student s5=session.get(Student.class,id);
+            if(s5!=null)
+            {
+                session.remove(s5);
+            }
+            tx3.commit();
+            System.out.println("Student deleted successfully");
+        }
+        catch(Exception e)
+        {
+            if(tx3!=null)
+            {
+                tx3.rollback();
+            }
+            e.printStackTrace();
+            System.out.println("Error deleting data");
+        }
     }
     
 }

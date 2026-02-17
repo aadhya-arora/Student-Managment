@@ -15,9 +15,10 @@ public class App
         Configuration cfg=new  Configuration();
         cfg.configure();
         cfg.addAnnotatedClass(Student.class);
+        cfg.addAnnotatedClass(Library.class);
         SessionFactory factory=cfg.buildSessionFactory();
         Session session=factory.openSession();
-        Main m=new Main();
+        Main_Student m=new Main_Student();
         boolean running = true;
         
         while (running) 
