@@ -13,7 +13,7 @@ public class Library {
     private Long id;
     private String book_name;
     private String author;
-    private int genre;
+    private String genre;
 
     public Long getId() {
         return id;
@@ -39,11 +39,11 @@ public class Library {
         this.author = author;
     }
 
-    public int getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(int genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
     
