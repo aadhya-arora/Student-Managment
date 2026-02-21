@@ -33,10 +33,14 @@ public class Main_Library {
             String author=sc.nextLine();
             System.out.print("Genre:");
             String genre=sc.nextLine();
+            System.out.println("Enter student ID to issue the book to:");
+            int student_id=sc.nextInt();
+            Student s=session.get(Student.class,student_id);
             Library l=new Library();
             l.setBook_name(book_name);
             l.setAuthor(author);
             l.setGenre(genre);
+            l.setStudent(s);
             tx=session.beginTransaction();
             session.save(l);
             tx.commit();
@@ -72,6 +76,7 @@ public class Main_Library {
                         System.out.print("Book Name: "+b.getBook_name());
                         System.out.println("Author: "+b.getAuthor());
                         System.out.println("Genre: "+b.getGenre());
+                        System.out.println("Issued to: "+b.getStudent().get_name());
                     }
                     break;
                 case 2:
